@@ -3,12 +3,38 @@
 <head>
   <meta charset="utf-8">
   <title>Hangtheman</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Custom styles for this template -->
+    <link href="css/grid.css" rel="stylesheet">
 
   <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
-  <div id="qunit"></div>
-  <div id="qunit-fixture"></div>
-
+	<div class="container">
+		<div class="page-header">
+			<h1>Welcome to the hangman game!!</h1>
+			<p class="lead">Press the magical start button to start a new game</p>
+		</div>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4 text-center">
+				<div class="btn btn-primary btn-lg" id="ht-start-btn">Magical start button</div>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-center" id ="ht-letter-container">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-offset-5 col-md-2 text-center">
+				<div class="input-group input-group-lg">
+					<input type="text" id="ht-guesses" class="form-control" maxlength="1"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/lib/bootstrap.min.js"></script>
+	<script src="js/hangtheman.js"></script>
 </body>
 </html>
