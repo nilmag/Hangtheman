@@ -1,9 +1,10 @@
-var words = ['Javascript', 'Programming', 'TestDriven-Development', 'Hanttheman'];
-
 var hangtheman =  {
 	guesses: [],
 	solution: '',
 	con:'',
+	getRandomWord: function(list) {
+		return list[Math.floor(Math.random() * list.length)];
+	},
 	maskTheWord: function(word, chars) {
 		console.log(chars.join(''));
 		var regex = new RegExp('[^' + chars.join() + ']', 'gi');
@@ -21,12 +22,15 @@ var hangtheman =  {
 		}).join("");
 	},
 	guess: function(letter) {
-		this.guesses.push(letter);
-		this.render();
-		
-		if(this.guessedSolution(this.solution, this.guesses)) {
-			this.con.style.color = '#0c0';
-			console.log('HOOOORAAYYYYY!!!');
+		if(this.guesses.indexOf(letter) === -1) {
+			this.guesses.push(letter);
+			this.render();
+			
+			if(this.guessedSolution(this.solution, this.guesses)) {
+				this.con.style.color = '#0c0';
+				console.log('HOOOORAAYYYYY!!!');
+				document.getElementById('ht-guesses').disabled='disabled';
+			}
 		}
 	},
 	printGuesses: function() {
@@ -51,21 +55,28 @@ var onGuess = function(val) {
 
 var setUp = function() {
 	var hangman = hangtheman;
-	hangman.solution = 'Programming';
+	var list = ['Programming', 'Javascript', 'Require', 'Bootstrap', 'css', 'Backbone'];
+	hangman.solution = hangman.getRandomWord(list);
+	hangman.guesses=[];
+
+	document.getElementById('input_row').style='display:block';
 
 	hangman.con = document.getElementById('ht-letter-container');
+	hangman.con.style.color='#000';
 	hangman.render();
 
-	var startbtn = document.getElementById('ht-start-btn');
-	console.log(startbtn);
-	startbtn.addEventListener('click', function() {
-		console.log('starting');
-	}, false);
-
 	var input = document.getElementById('ht-guesses');
+	input.removeAttribute('disabled');
 	input.addEventListener('keyup', function(e) {
 		hangman.guess(input.value);
 		input.value = '';
 	}, false);
 	document.getElementById('ht-guesses').focus();
+};
+
+var init = function() {
+	var startbtn = document.getElementById('ht-start-btn');
+	startbtn.addEventListener('click', function() {
+		setUp();
+	}, false);
 }();

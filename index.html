@@ -5,7 +5,8 @@
   <title>Hangtheman</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Custom styles for this template -->
-    <link href="css/grid.css" rel="stylesheet">
+    <!-- <link href="css/grid.css" rel="stylesheet"> -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
   <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
@@ -16,17 +17,21 @@
 			<p class="lead">Press the magical start button to start a new game</p>
 		</div>
 		<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-4 text-center">
+			<div class="col-md-offset-4 col-md-4 text-center">
 				<div class="btn btn-primary btn-lg" id="ht-start-btn">Magical start button</div>
 			</div>
-			<div class="col-md-4"></div>
+		</div>
+		<div class="row">
+			&nbsp;
 		</div>
 		<div class="row">
 			<div class="col-md-12 text-center" id ="ht-letter-container">
 			</div>
 		</div>
 		<div class="row">
+			&nbsp;
+		</div>
+		<div class="row" id="input_row" style='display:none;'>
 			<div class="col-md-offset-5 col-md-2 text-center">
 				<div class="input-group input-group-lg">
 					<input type="text" id="ht-guesses" class="form-control" maxlength="1"/>
